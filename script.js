@@ -1,0 +1,1 @@
+const moundsDiv = document.getElementsByClassName("mounds");

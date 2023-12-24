@@ -1,12 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Whack-A-Mole</title>
     <link rel="stylesheet" href="./output.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            font-family: 'Amatic SC', sans-serif;
+        }
+    </style>
 </head>
-<body>
-    
+
+<body class="bg-[#f7c000] min-h-[100vh] flex justify-center items-center">
+    <main class="w-[95%] md:w-[75%]">
+        <div class="p-4 flex flex-col justify-center items-center gap-8">
+            <!-- Heading -->
+            <h1 class="text-[#271e00] text-5xl md:text-7xl font-semibold tracking-wider">Whack-A-Mole!</h1>
+            <!-- Mounds Div -->
+            <div class="w-full grid grid-cols-3 gap-4 md:gap-0">
+                <div class="mounds flex justify-center items-center">
+                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                </div>
+                <div class="mounds flex justify-center items-center">
+                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                </div>
+                <div class="mounds flex justify-center items-center">
+                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                </div>
+                <div class="mounds flex justify-center items-center">
+                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                </div>
+                <div class="mounds flex justify-center items-center">
+                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                </div>
+                <div class="mounds flex justify-center items-center">
+                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                </div>
+                <div class="mounds flex justify-center items-center">
+                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                </div>
+                <div class="mounds flex justify-center items-center">
+                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                </div>
+                <div class="mounds flex justify-center items-center">
+                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                </div>
+            </div>
+        </div>
+    </main>
+    <script src="./script.js"></script>
 </body>
+
 </html>
