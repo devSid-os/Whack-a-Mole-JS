@@ -5,9 +5,35 @@ const overlay = document.getElementById("overlay");
 const currentScoreDetailsDiv = document.getElementById("currentScoreDetails");
 const retryBtn = document.getElementById("retry");
 const userNameInput = document.getElementById("userName");
-const localStorageScoreDetails = localStorage.getItem("scoreDetails") || new Array;
+const scoreTableDiv = document.getElementById("scoreTable");
+const localStorageScoreDetails = JSON.parse(localStorage.getItem("scoreDetails")) || new Array;
 var currentScore = 0;
 var gameInterval = null;
+
+function showScoreTable() {
+    var tableIndex = 0;
+    scoreTableDiv.classList.remove("hidden");
+    localStorageScoreDetails.sort((a, b) => {
+        return b.score - a.score;
+    })
+    localStorageScoreDetails.map(item => {
+        ++tableIndex;
+        const tr = document.createElement("tr");
+        const td1 = document.createElement("td");
+        const td2 = document.createElement("td");
+        const td3 = document.createElement("td");
+        td1.classList.add("border", "border-black", "font-bold", "text-center", "p-4", "px-6", "text-2xl", "tracking-wider", "bg-white");
+        td2.classList.add("border", "border-black", "font-bold", "text-center", "p-4", "px-6", "text-2xl", "tracking-wider", "bg-white");
+        td3.classList.add("border", "border-black", "font-bold", "text-center", "p-4", "px-6", "text-2xl", "tracking-wider", "bg-white");
+        td1.textContent = tableIndex;
+        td2.textContent = item.name;
+        td3.textContent = item.score;
+        tr.appendChild(td1);
+        tr.appendChild(td2);
+        tr.appendChild(td3);
+        document.getElementById("scoreTableBody").appendChild(tr);
+    });
+}
 
 function saveScoreDetails() {
     var scoreObj = new Object;
@@ -15,6 +41,8 @@ function saveScoreDetails() {
     scoreObj.score = currentScore;
     localStorageScoreDetails.push(scoreObj);
     localStorage.setItem("scoreDetails", JSON.stringify(localStorageScoreDetails));
+    currentScoreDetailsDiv.classList.add("hidden");
+    showScoreTable();
 }
 
 // Function to increment Score when game is in start mode

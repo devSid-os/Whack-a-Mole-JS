@@ -25,7 +25,8 @@
     <div id="overlay" class="hidden absolute z-10 h-full w-full bg-[black] opacity-65"></div>
 
     <!-- Get User Score Details Div -->
-    <div id="currentScoreDetails" class="hidden absolute z-20 font-bold flex flex-col justify-center items-center gap-4 p-4 tracking-widest">
+    <div id="currentScoreDetails"
+        class="hidden absolute z-20 font-bold flex flex-col justify-center items-center gap-4 p-4 tracking-widest">
         <h2 style="font-family: 'Titan One', sans-serif;" class="text-4xl font-normal text-[red]">GAME
             OVER</h2>
         <p class="text-[white] text-3xl">Enter you name!</p>
@@ -33,6 +34,33 @@
         <button id="retry" type="button" class="text-2xl text-white cursor-pointer">Retry?</button>
     </div>
 
+    <!-- Score Table Details -->
+    <div id="scoreTable" class="hidden absolute z-20">
+        <table class="border-collapse border border-black">
+            <thead>
+                <tr>
+                    <td style="font-family: 'Titan One', sans-serif;"
+                        class="border border-black p-4 px-6 text-xl bg-[red] text-white">#</td>
+                    <td style="font-family: 'Titan One', sans-serif;"
+                        class="border border-black p-4 px-6 text-xl bg-[red] text-white">Name
+                    </td>
+                    <td style="font-family: 'Titan One', sans-serif;"
+                        class="border border-black p-4 px-6 text-xl bg-[red] text-white">Score
+                    </td>
+                </tr>
+            </thead>
+            <tbody id="scoreTableBody">
+                <!-- <tr>
+                    <td class="border border-black font-bold text-center p-4 px-6 text-2xl tracking-wider bg-white">1
+                    </td>
+                    <td class="border border-black font-bold text-center p-4 px-6 text-2xl tracking-wider bg-white">
+                        Siddharth</td>
+                    <td class="border border-black font-bold text-center p-4 px-6 text-2xl tracking-wider bg-white">20
+                    </td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
 
     <main class="w-[95%] h-full md:w-[75%]">
 
