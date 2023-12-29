@@ -5,8 +5,17 @@ const overlay = document.getElementById("overlay");
 const currentScoreDetailsDiv = document.getElementById("currentScoreDetails");
 const retryBtn = document.getElementById("retry");
 const userNameInput = document.getElementById("userName");
+const localStorageScoreDetails = localStorage.getItem("scoreDetails") || new Array;
 var currentScore = 0;
 var gameInterval = null;
+
+function saveScoreDetails() {
+    var scoreObj = new Object;
+    scoreObj.name = userNameInput.value;
+    scoreObj.score = currentScore;
+    localStorageScoreDetails.push(scoreObj);
+    localStorage.setItem("scoreDetails", JSON.stringify(localStorageScoreDetails));
+}
 
 // Function to increment Score when game is in start mode
 function incrementScore(num) {
@@ -36,7 +45,6 @@ function gameOver() {
     score.classList.add("hidden");
     startBtn.classList.remove("hidden");
     score.textContent = "Score: 0";
-    currentScore = 0;
     userNameInput.value = "";
 }
 
@@ -56,8 +64,22 @@ retryBtn.addEventListener("click", function () {
     startGame();
 });
 
+
+
 startBtn.addEventListener("click", function () {
     startBtn.classList.add("hidden");
     score.classList.remove("hidden");
     startGame();
 });
+
+userNameInput.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+        if (userNameInput.value.length) {
+            saveScoreDetails();
+        }
+        else {
+            currentScoreDetailsDiv.classList.add("hidden");
+            overlay.classList.add("hidden");
+        }
+    }
+})
