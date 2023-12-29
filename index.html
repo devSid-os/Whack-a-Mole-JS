@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Whack-A-Mole</title>
     <link rel="stylesheet" href="./output.css">
+    <!-- Google Font librarys -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
@@ -21,7 +22,7 @@
         <div class="p-4 flex flex-col justify-between items-center gap-6">
             <!-- Heading -->
             <h1 class="text-[#271e00] text-5xl md:text-7xl font-semibold tracking-wider">Whack-A-Mole!</h1>
-            <!-- Mounds Div -->
+            <!-- Mounds Grid Div -->
             <div class="w-full grid grid-cols-3 gap-4 md:gap-0">
                 <div class="mounds flex justify-center items-center">
                     <img onclick="incrementScore(0)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
@@ -60,8 +61,10 @@
                         alt="Image not available">
                 </div>
             </div>
+            <!-- Start Game Button -->
             <button class="bg-white font-bold tracking-widest p-2 px-4 text-2xl rounded-sm" type="button"
                 id="startBtn">Start</button>
+            <!-- Score HTML Element -->
             <p id="score" class="hidden text-4xl tracking-wider text-center font-bold">Score: 0</p>
         </div>
     </main>
