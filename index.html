@@ -17,40 +17,52 @@
 </head>
 
 <body class="bg-[#f7c000] min-h-[100vh] flex justify-center items-center">
-    <main class="w-[95%] md:w-[75%]">
-        <div class="p-4 flex flex-col justify-center items-center gap-8">
+    <main class="w-[95%] h-full md:w-[75%]">
+        <div class="p-4 flex flex-col justify-between items-center gap-6">
             <!-- Heading -->
             <h1 class="text-[#271e00] text-5xl md:text-7xl font-semibold tracking-wider">Whack-A-Mole!</h1>
             <!-- Mounds Div -->
             <div class="w-full grid grid-cols-3 gap-4 md:gap-0">
                 <div class="mounds flex justify-center items-center">
-                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                    <img onclick="incrementScore(0)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
+                        alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                    <img onclick="incrementScore(1)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
+                        alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                    <img onclick="incrementScore(2)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
+                        alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                    <img onclick="incrementScore(3)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
+                        alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                    <img onclick="incrementScore(4)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
+                        alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                    <img onclick="incrementScore(5)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
+                        alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                    <img onclick="incrementScore(6)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
+                        alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                    <img onclick="incrementScore(7)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
+                        alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img class="object-contain w-[150px] h-[150px]" src="./img/mound.png" alt="Image not available">
+                    <img onclick="incrementScore(8)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
+                        alt="Image not available">
                 </div>
             </div>
+            <button class="bg-white font-bold tracking-widest p-2 px-4 text-2xl rounded-sm" type="button"
+                id="startBtn">Start</button>
+            <p id="score" class="hidden text-4xl tracking-wider text-center font-bold">Score: 0</p>
         </div>
     </main>
     <script src="./script.js"></script>
