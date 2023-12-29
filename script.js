@@ -1,6 +1,10 @@
 const moundsDiv = document.getElementsByClassName("mounds");
 const startBtn = document.getElementById("startBtn");
 const score = document.getElementById("score");
+const overlay = document.getElementById("overlay");
+const currentScoreDetailsDiv = document.getElementById("currentScoreDetails");
+const retryBtn = document.getElementById("retry");
+const userNameInput = document.getElementById("userName");
 var currentScore = 0;
 var gameInterval = null;
 
@@ -27,10 +31,13 @@ function showMole() {
 
 function gameOver() {
     clearInterval(gameInterval);
+    overlay.classList.remove("hidden");
+    currentScoreDetailsDiv.classList.remove("hidden");
     score.classList.add("hidden");
     startBtn.classList.remove("hidden");
     score.textContent = "Score: 0";
     currentScore = 0;
+    userNameInput.value = "";
 }
 
 function startGame() {
@@ -40,6 +47,14 @@ function startGame() {
     // End game after 20 seconds
     setTimeout(gameOver, 20000);
 }
+
+retryBtn.addEventListener("click", function () {
+    overlay.classList.add("hidden");
+    currentScoreDetailsDiv.classList.add("hidden");
+    startBtn.classList.add("hidden");
+    score.classList.remove("hidden");
+    startGame();
+});
 
 startBtn.addEventListener("click", function () {
     startBtn.classList.add("hidden");
