@@ -6,25 +6,25 @@ const currentScoreDetailsDiv = document.getElementById("currentScoreDetails");
 const retryBtn = document.getElementById("retry");
 const userNameInput = document.getElementById("userName");
 const scoreTableDiv = document.getElementById("scoreTable");
-const localStorageScoreDetails = JSON.parse(localStorage.getItem("scoreDetails")) || new Array;
+var localStorageScoreDetails = JSON.parse(localStorage.getItem("scoreDetails")) || new Array;
 var currentScore = 0;
 var gameInterval = null;
 
 function showScoreTable() {
     var tableIndex = 0;
     scoreTableDiv.classList.remove("hidden");
-    localStorageScoreDetails.sort((a, b) => {
-        return b.score - a.score;
-    })
+    // localStorageScoreDetails.sort((a, b) => {
+    //     return b.score - a.score;
+    // })
     localStorageScoreDetails.map(item => {
         ++tableIndex;
         const tr = document.createElement("tr");
         const td1 = document.createElement("td");
         const td2 = document.createElement("td");
         const td3 = document.createElement("td");
-        td1.classList.add("border", "border-black", "font-bold", "text-center", "p-4", "px-6", "text-2xl", "tracking-wider", "bg-white");
-        td2.classList.add("border", "border-black", "font-bold", "text-center", "p-4", "px-6", "text-2xl", "tracking-wider", "bg-white");
-        td3.classList.add("border", "border-black", "font-bold", "text-center", "p-4", "px-6", "text-2xl", "tracking-wider", "bg-white");
+        td1.classList.add("border", "border-black", "font-bold", "text-center", "text-2xl", "tracking-wider", "bg-white");
+        td2.classList.add("border", "border-black", "font-bold", "text-center", "text-2xl", "tracking-wider", "bg-white");
+        td3.classList.add("border", "border-black", "font-bold", "text-center", "text-2xl", "tracking-wider", "bg-white");
         td1.textContent = tableIndex;
         td2.textContent = item.name;
         td3.textContent = item.score;
@@ -36,10 +36,26 @@ function showScoreTable() {
 }
 
 function saveScoreDetails() {
-    var scoreObj = new Object;
-    scoreObj.name = userNameInput.value;
-    scoreObj.score = currentScore;
-    localStorageScoreDetails.push(scoreObj);
+    var obj = new Object;
+    obj.name = userNameInput.value;
+    obj.score = currentScore;
+    if (localStorageScoreDetails.length < 8) {
+        localStorageScoreDetails.push(obj);
+    }
+    else {
+        var tempArr;
+        tempArr = localStorageScoreDetails.filter(item => item.score >= currentScore);
+        if (tempArr.length < 8) {
+            tempArr.push(obj);
+            var bottomScores = localStorageScoreDetails.filter(item => currentScore > item.score);
+            bottomScores.pop();
+            tempArr = tempArr.concat(bottomScores);
+            localStorageScoreDetails = tempArr;
+        }
+    }
+    localStorageScoreDetails.sort((a, b) => {
+        return b.score - a.score;
+    })
     localStorage.setItem("scoreDetails", JSON.stringify(localStorageScoreDetails));
     currentScoreDetailsDiv.classList.add("hidden");
     showScoreTable();
@@ -81,7 +97,7 @@ function startGame() {
     // show mole after every 1 seconds and 100 miliseconds
     gameInterval = setInterval(showMole, 1100);
     // End game after 20 seconds
-    setTimeout(gameOver, 20000);
+    setTimeout(gameOver, 10000);
 }
 
 retryBtn.addEventListener("click", function () {
