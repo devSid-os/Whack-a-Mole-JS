@@ -12,17 +12,25 @@ var currentScore = 0;
 var gameInterval = null;
 var gameTime = 20000;
 
+
+// Function to close score table div
 function closeScoreTableDiv() {
+    // Hide overlay and score table on button click
     scoreTableDiv.classList.add("hidden");
     overlay.classList.add("hidden");
+    // and empty table body
     while (scoreTableBody.firstChild) {
         scoreTableBody.removeChild(scoreTableBody.firstChild);
     }
 }
 
+// Function that shows score Table div
 function showScoreTable() {
+    // variable for table index
     var tableIndex = 0;
+    // show score table
     scoreTableDiv.classList.remove("hidden");
+    // Insert rows and show localstorage data
     localStorageScoreDetails.map(item => {
         ++tableIndex;
         const tr = document.createElement("tr");
@@ -41,23 +49,27 @@ function showScoreTable() {
         document.getElementById("scoreTableBody").appendChild(tr);
     });
 }
-
+// Function to save user score and user name
 function saveScoreDetails() {
+    // save score and name in an object
     var obj = new Object;
     obj.name = userNameInput.value;
     obj.score = currentScore;
+    // if there are less than 8 records than push
+    // user score and name to localstorage 
     if (localStorageScoreDetails.length < 8) {
         localStorageScoreDetails.push(obj);
     }
     else {
-        var tempArr;
-        tempArr = localStorageScoreDetails.filter(item => item.score >= currentScore);
-        if (tempArr.length < 8) {
-            tempArr.push(obj);
+        // if there are already 8 records than
+        // filter all records and update the top 8 scores
+        var topScores = localStorageScoreDetails.filter(item => item.score >= currentScore);
+        if (topScores.length < 8) {
+            topScores.push(obj);
             var bottomScores = localStorageScoreDetails.filter(item => currentScore > item.score);
             bottomScores.pop();
-            tempArr = tempArr.concat(bottomScores);
-            localStorageScoreDetails = tempArr;
+            topScores = topScores.concat(bottomScores);
+            localStorageScoreDetails = topScores;
         }
     }
     localStorageScoreDetails.sort((a, b) => {
@@ -67,8 +79,6 @@ function saveScoreDetails() {
     currentScoreDetailsDiv.classList.add("hidden");
     showScoreTable();
 }
-
-
 
 // Function to remove Mole
 function hideMole(num) {
