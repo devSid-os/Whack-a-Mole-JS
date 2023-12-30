@@ -7,10 +7,23 @@ const retryBtn = document.getElementById("retry");
 const userNameInput = document.getElementById("userName");
 const scoreTableDiv = document.getElementById("scoreTable");
 const scoreTableBody = document.getElementById("scoreTableBody");
+const lvlBtn = document.getElementById("level");
 var localStorageScoreDetails = JSON.parse(localStorage.getItem("scoreDetails")) || new Array;
 var currentScore = 0;
 var gameInterval = null;
-var gameTime = 20000;
+var gameTime = 25000;
+var moleSpeed = 1100;
+
+lvlBtn.addEventListener("click", () => {
+    if (lvlBtn.textContent.includes("EASY")) {
+        lvlBtn.textContent = "HARD?";
+        moleSpeed = 1100;
+    }
+    else {
+        lvlBtn.textContent = "EASY?";
+        moleSpeed = 550;
+    }
+});
 
 
 // Function to close score table div
@@ -40,6 +53,18 @@ function showScoreTable() {
         td1.classList.add("border", "border-black", "font-bold", "text-center", "py-2", "text-2xl", "tracking-wider", "bg-white");
         td2.classList.add("border", "border-black", "font-bold", "text-center", "py-2", "text-2xl", "tracking-wider", "bg-white");
         td3.classList.add("border", "border-black", "font-bold", "text-center", "py-2", "text-2xl", "tracking-wider", "bg-white");
+        if (tableIndex === 1) {
+            td1.id = "firstPlace";
+            td1.classList.add("text-[#ffa500]");
+        }
+        else if (tableIndex === 2) {
+            td1.id = "secondPlace";
+            td1.classList.add("text-[#ccc]");
+        }
+        else if (tableIndex === 3) {
+            td1.id = "thirdPlace";
+            td1.classList.add("text-[brown]");
+        }
         td1.textContent = tableIndex;
         td2.textContent = item.name;
         td3.textContent = item.score;
@@ -88,8 +113,8 @@ function hideMole(num) {
 function showMole() {
     const randomNumber = Math.floor(Math.random() * moundsDiv.length);
     moundsDiv[randomNumber].children[0].src = "./img/mole.png";
-    // Hide mole After every 1 second and 100 miliseconds
-    setTimeout(() => hideMole(randomNumber), 1100);
+    // Hide mole After every 1 second and 100 miliseconds (Default)
+    setTimeout(() => hideMole(randomNumber), moleSpeed);
 }
 
 // Function to increment Score when game is in start mode
@@ -103,6 +128,7 @@ function incrementScore(num) {
 }
 
 function gameOver() {
+    lvlBtn.classList.remove("hidden");
     clearInterval(gameInterval);
     overlay.classList.remove("hidden");
     currentScoreDetailsDiv.classList.remove("hidden");
@@ -113,9 +139,10 @@ function gameOver() {
 }
 
 function startGame() {
+    lvlBtn.classList.add("hidden");
     currentScore = 0;
-    // show mole after every 1 seconds and 100 miliseconds
-    gameInterval = setInterval(showMole, 1100);
+    // show mole after every 1 seconds and 100 miliseconds (Default)
+    gameInterval = setInterval(showMole, moleSpeed);
     // End game after 20 seconds
     setTimeout(gameOver, gameTime);
 }

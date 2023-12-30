@@ -13,14 +13,49 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titan+One&display=swap" rel="stylesheet">
+    <!-- Font Icons Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style>
         * {
             font-family: 'Amatic SC', sans-serif;
         }
+
+        #firstPlace::before {
+            position: absolute;
+            left: 5%;
+            height: 2rem;
+            width: 2rem;
+            background-color: #ffd90020;
+            content: '';
+            border-radius: 50%;
+            border: 2px solid #ffa500;
+        }
+
+        #secondPlace::before {
+            position: absolute;
+            left: 5%;
+            height: 2rem;
+            width: 2rem;
+            background-color: #ffd90020;
+            content: '';
+            border-radius: 50%;
+            border: 2px solid #ccc;
+        }
+
+        #thirdPlace::before {
+            position: absolute;
+            left: 5%;
+            height: 2rem;
+            width: 2rem;
+            background-color: #ffd90020;
+            content: '';
+            border-radius: 50%;
+            border: 2px solid brown;
+        }
     </style>
 </head>
 
-<body class="bg-[#f7c000] min-h-[100vh] flex justify-center items-center">
+<body class="bg-[#4cd137] min-h-[100vh] flex justify-center items-center">
     <!-- Overlay -->
     <div id="overlay" class="hidden absolute z-10 h-full w-full bg-[black] opacity-65"></div>
 
@@ -56,6 +91,12 @@
         </table>
     </div>
 
+    <!-- Game Settings Div -->
+    <div class="absolute top-2 right-2 p-2">
+        <button type="button" id="level" style="font-family: 'Titan One', sans-serif;"
+            class="border border-white p-2 rounded-sm text-xl tracking-wide text-white hover:bg-black hover:text-white">HARD?</button>
+    </div>
+
     <main class="w-[95%] h-full md:w-[75%]">
 
         <div class="p-4 flex flex-col justify-between items-center gap-6">
@@ -64,40 +105,40 @@
             <!-- Mounds Grid Div -->
             <div class="w-full grid grid-cols-3 gap-4 md:gap-0">
                 <div class="mounds flex justify-center items-center">
-                    <img onclick="incrementScore(0)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
-                        alt="Image not available">
+                    <img onclick="incrementScore(0)" class="cursor-pointer object-contain w-[150px] h-[150px]"
+                        src="./img/mound.png" alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img onclick="incrementScore(1)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
-                        alt="Image not available">
+                    <img onclick="incrementScore(1)" class="cursor-pointer object-contain w-[150px] h-[150px]"
+                        src="./img/mound.png" alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img onclick="incrementScore(2)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
-                        alt="Image not available">
+                    <img onclick="incrementScore(2)" class="cursor-pointer object-contain w-[150px] h-[150px]"
+                        src="./img/mound.png" alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img onclick="incrementScore(3)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
-                        alt="Image not available">
+                    <img onclick="incrementScore(3)" class="cursor-pointer object-contain w-[150px] h-[150px]"
+                        src="./img/mound.png" alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img onclick="incrementScore(4)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
-                        alt="Image not available">
+                    <img onclick="incrementScore(4)" class="cursor-pointer object-contain w-[150px] h-[150px]"
+                        src="./img/mound.png" alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img onclick="incrementScore(5)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
-                        alt="Image not available">
+                    <img onclick="incrementScore(5)" class="cursor-pointer object-contain w-[150px] h-[150px]"
+                        src="./img/mound.png" alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img onclick="incrementScore(6)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
-                        alt="Image not available">
+                    <img onclick="incrementScore(6)" class="cursor-pointer object-contain w-[150px] h-[150px]"
+                        src="./img/mound.png" alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img onclick="incrementScore(7)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
-                        alt="Image not available">
+                    <img onclick="incrementScore(7)" class="cursor-pointer object-contain w-[150px] h-[150px]"
+                        src="./img/mound.png" alt="Image not available">
                 </div>
                 <div class="mounds flex justify-center items-center">
-                    <img onclick="incrementScore(8)" class="object-contain w-[150px] h-[150px]" src="./img/mound.png"
-                        alt="Image not available">
+                    <img onclick="incrementScore(8)" class="cursor-pointer object-contain w-[150px] h-[150px]"
+                        src="./img/mound.png" alt="Image not available">
                 </div>
             </div>
             <!-- Start Game Button -->
