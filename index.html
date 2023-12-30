@@ -36,7 +36,7 @@
 
     <!-- Score Table Details -->
     <div id="scoreTable" class="hidden flex justify-center items-center absolute z-20" style="height: 100%;">
-        <table class="border-collapse border border-black">
+        <table>
             <thead>
                 <tr>
                     <td style="font-family: 'Titan One', sans-serif;"
@@ -47,18 +47,12 @@
                     <td style="font-family: 'Titan One', sans-serif;"
                         class="border border-black p-4 px-6 text-xl bg-red-500 text-white">Score
                     </td>
+                    <td onclick="closeScoreTableDiv()" style="font-family: 'Titan One', sans-serif;"
+                        class="p-4 px-6 text-xl bg-red-500 text-white cursor-pointer">&times;
+                    </td>
                 </tr>
             </thead>
-            <tbody id="scoreTableBody">
-                <!-- <tr>
-                    <td class="border border-black font-bold text-center p-4 px-6 text-2xl tracking-wider bg-white">1
-                    </td>
-                    <td class="border border-black font-bold text-center p-4 px-6 text-2xl tracking-wider bg-white">
-                        Siddharth</td>
-                    <td class="border border-black font-bold text-center p-4 px-6 text-2xl tracking-wider bg-white">20
-                    </td>
-                </tr> -->
-            </tbody>
+            <tbody id="scoreTableBody"></tbody>
         </table>
     </div>
 

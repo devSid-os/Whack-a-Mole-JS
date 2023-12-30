@@ -6,25 +6,32 @@ const currentScoreDetailsDiv = document.getElementById("currentScoreDetails");
 const retryBtn = document.getElementById("retry");
 const userNameInput = document.getElementById("userName");
 const scoreTableDiv = document.getElementById("scoreTable");
+const scoreTableBody = document.getElementById("scoreTableBody");
 var localStorageScoreDetails = JSON.parse(localStorage.getItem("scoreDetails")) || new Array;
 var currentScore = 0;
 var gameInterval = null;
+var gameTime = 20000;
+
+function closeScoreTableDiv() {
+    scoreTableDiv.classList.add("hidden");
+    overlay.classList.add("hidden");
+    while (scoreTableBody.firstChild) {
+        scoreTableBody.removeChild(scoreTableBody.firstChild);
+    }
+}
 
 function showScoreTable() {
     var tableIndex = 0;
     scoreTableDiv.classList.remove("hidden");
-    // localStorageScoreDetails.sort((a, b) => {
-    //     return b.score - a.score;
-    // })
     localStorageScoreDetails.map(item => {
         ++tableIndex;
         const tr = document.createElement("tr");
         const td1 = document.createElement("td");
         const td2 = document.createElement("td");
         const td3 = document.createElement("td");
-        td1.classList.add("border", "border-black", "font-bold", "text-center", "text-2xl", "tracking-wider", "bg-white");
-        td2.classList.add("border", "border-black", "font-bold", "text-center", "text-2xl", "tracking-wider", "bg-white");
-        td3.classList.add("border", "border-black", "font-bold", "text-center", "text-2xl", "tracking-wider", "bg-white");
+        td1.classList.add("border", "border-black", "font-bold", "text-center", "py-2", "text-2xl", "tracking-wider", "bg-white");
+        td2.classList.add("border", "border-black", "font-bold", "text-center", "py-2", "text-2xl", "tracking-wider", "bg-white");
+        td3.classList.add("border", "border-black", "font-bold", "text-center", "py-2", "text-2xl", "tracking-wider", "bg-white");
         td1.textContent = tableIndex;
         td2.textContent = item.name;
         td3.textContent = item.score;
@@ -61,14 +68,7 @@ function saveScoreDetails() {
     showScoreTable();
 }
 
-// Function to increment Score when game is in start mode
-function incrementScore(num) {
-    const str = moundsDiv[num].children[0].src;
-    if (str.includes("mole")) {
-        ++currentScore;
-        score.textContent = "Score: " + currentScore;
-    }
-}
+
 
 // Function to remove Mole
 function hideMole(num) {
@@ -80,6 +80,16 @@ function showMole() {
     moundsDiv[randomNumber].children[0].src = "./img/mole.png";
     // Hide mole After every 1 second and 100 miliseconds
     setTimeout(() => hideMole(randomNumber), 1100);
+}
+
+// Function to increment Score when game is in start mode
+function incrementScore(num) {
+    const str = moundsDiv[num].children[0].src;
+    if (str.includes("mole")) {
+        ++currentScore;
+        score.textContent = "Score: " + currentScore;
+    }
+    hideMole(num);
 }
 
 function gameOver() {
@@ -97,7 +107,7 @@ function startGame() {
     // show mole after every 1 seconds and 100 miliseconds
     gameInterval = setInterval(showMole, 1100);
     // End game after 20 seconds
-    setTimeout(gameOver, 10000);
+    setTimeout(gameOver, gameTime);
 }
 
 retryBtn.addEventListener("click", function () {
@@ -126,4 +136,4 @@ userNameInput.addEventListener("keyup", (e) => {
             overlay.classList.add("hidden");
         }
     }
-})
+});
